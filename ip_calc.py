@@ -11,7 +11,7 @@ def check_rules(raw_address: str) -> str:
             return 'Error'
     for w in raw_address:
         if any(w) == '/':
-            return 'Missing prefix'
+            return 'Error'
     data =  raw_address.split('.')
     w = data[-1].split('/')
     if int(w[0]) > 255 or int(w[1]) > 32:
@@ -24,9 +24,7 @@ def check_rules(raw_address: str) -> str:
     for i in data[:-1]:
         if int(i) > 255:
             return 'Error'
-    
-    
-
+   
 def get_ip_from_raw_address(raw_address: str) -> str:
     """
     This function get ip address from raw address
